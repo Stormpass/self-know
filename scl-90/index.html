@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +64,8 @@
       color: var(--text-light);
       font-size: 16px;
     }
-    .severity-list > li{
+
+    .severity-list>li {
       margin-bottom: 10px;
       font-size: 16px;
     }
@@ -132,11 +134,12 @@
       0% {
         background-position: -100% 0;
       }
+
       100% {
         background-position: 200% 0;
       }
     }
-    
+
     /* @keyframes float {
       0%, 100% {
         transform: translateY(0) translateZ(0);
@@ -145,9 +148,9 @@
         transform: translateY(-5px) translateZ(0);
       }
     } */
-    
+
     h1 {
-      font-size: 32px;
+      font-size: 26px;
       margin: 15px 0 25px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -160,7 +163,8 @@
       background-clip: text;
       text-fill-color: transparent;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       border-bottom: 3px solid var(--primary-light);
       position: relative;
       overflow: hidden;
@@ -170,8 +174,36 @@
       backface-visibility: hidden;
       -webkit-font-smoothing: subpixel-antialiased;
     }
-    
-    h1::before, h1::after {
+
+    /* 添加响应式样式，解决移动端换行问题 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+      }
+
+      .title-decoration {
+        width: 12px;
+        height: 12px;
+        margin: 0 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+      }
+
+      .title-decoration {
+        width: 8px;
+        height: 8cqi;
+        margin: 0 5px;
+      }
+    }
+
+    h1::before,
+    h1::after {
       content: "";
       position: absolute;
       bottom: -3px;
@@ -180,39 +212,40 @@
       background-color: var(--secondary-color);
       transition: all 0.5s ease;
     }
-    
+
     h1::before {
       left: 0;
     }
-    
+
     h1::after {
       right: 0;
     }
-    
+
     h1:hover::before {
       width: 50px;
     }
-    
+
     h1:hover::after {
       width: 50px;
     }
-    
+
     .title-decoration {
       display: inline-block;
-      width: 30px;
-      height: 30px;
+      width: 18px;
+      height: 18px;
       position: relative;
-      margin: 0 15px;
+      margin: 0 12px;
       vertical-align: middle;
     }
-    
-    .title-decoration::before, .title-decoration::after {
+
+    .title-decoration::before,
+    .title-decoration::after {
       content: "";
       position: absolute;
       background-color: var(--secondary-color);
       opacity: 0.7;
     }
-    
+
     .title-decoration::before {
       width: 20px;
       height: 2px;
@@ -220,7 +253,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
     .title-decoration::after {
       width: 2px;
       height: 20px;
@@ -243,7 +276,7 @@
     }
 
     .intro-section {
-      padding: 35px 30px;
+      padding: 35px 10px;
       text-align: center;
       display: block;
     }
@@ -575,7 +608,7 @@
     .factors-table tr:hover {
       background-color: #f8fafc;
     }
-    
+
     .factors-table tr:last-child td {
       border-bottom: none;
     }
@@ -648,7 +681,7 @@
       padding: 12px 0;
       border-bottom: 1px solid #e2e8f0;
     }
-    
+
     .factor-description-container:last-child {
       border-bottom: none;
     }
@@ -664,7 +697,7 @@
         transform: translateY(0);
       }
     }
-    
+
     @keyframes slideIn {
       from {
         opacity: 0;
@@ -682,7 +715,7 @@
     .intro-section {
       animation: fadeIn 0.5s ease forwards;
     }
-    
+
     .option {
       animation: slideIn 0.3s ease forwards;
       animation-delay: calc(0.05s * var(--animation-order, 0));
@@ -727,7 +760,7 @@
       transition: opacity 0.3s ease;
       backdrop-filter: blur(5px);
     }
-    
+
     .qrcode-container {
       background-color: var(--card-color);
       padding: 30px;
@@ -739,24 +772,24 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.5s ease forwards;
     }
-    
+
     .qrcode-container img {
       width: 100%;
       height: auto;
       border-radius: 8px;
       margin: 15px 0;
     }
-    
+
     .qrcode-container h3 {
       margin-top: 0;
       color: var(--primary-color);
     }
-    
+
     .qrcode-container p {
       margin-bottom: 20px;
       color: var(--text-light);
     }
-    
+
     .close-qrcode {
       position: absolute;
       top: 10px;
@@ -777,6 +810,7 @@
 
     /* Responsive Design */
     @media (min-width: 768px) {
+
       .content,
       .intro-section,
       .result-card {
@@ -800,16 +834,16 @@
       .factors-table {
         font-size: 16px;
       }
-      
+
       .question-text-container {
         height: calc(2em * 1.8);
         margin-bottom: 35px;
       }
-      
+
       .intro-content {
         padding: 35px;
       }
-      
+
       .btn {
         padding: 16px 0;
         font-size: 17px;
@@ -817,6 +851,7 @@
     }
 
     @media (max-width: 480px) {
+
       .factors-table th,
       .factors-table td {
         padding: 10px 6px;
@@ -831,34 +866,35 @@
       .question-text-container {
         height: calc(2em * 1.8);
       }
-      
+
       .question-text {
         font-size: 16px;
         padding: 12px 15px;
       }
-      
+
       .option {
         padding: 14px 16px;
       }
-      
+
       .btn {
         padding: 12px 0;
       }
-      
-      .btn-start, .btn-restart {
+
+      .btn-start,
+      .btn-restart {
         padding: 14px 20px;
         font-size: 16px;
       }
-      
+
       .interpretation {
         padding: 20px;
         font-size: 15px;
       }
-      
+
       h1 {
         font-size: 24px;
       }
-      
+
       h2 {
         font-size: 20px;
       }
@@ -940,8 +976,8 @@
           <button class="btn btn-next" onclick="navigateToNextQuestion()">
             下一题 <span>&gt;&gt;</span>
           </button>
-          <p style="margin-top: 15px; font-size: 13px; color: #666; text-align: center;">请根据您的真实感受作答，答案无对错之分</p>
         </div>
+        <p style="margin-top: 15px; font-size: 13px; color: #666; text-align: center;">请根据您的真实感受作答，答案无对错之分</p>
       </div>
 
       <div class="result-section" id="resultSection">
@@ -951,7 +987,8 @@
           <div class="total-score">
             <p>SCL-90总分评估</p>
             <p class="total-score-value" id="totalScore"></p>
-            <p>单项平均分: <span id="averageScore"></span> <small style="color:#666;">(参考值: 正常<2.0)</small></p>
+            <p>单项平均分: <span id="averageScore"></span> <small style="color:#666;">(参考值: 正常<2.0)< /small>
+            </p>
           </div>
 
           <h3>心理健康维度评估</h3>
@@ -978,7 +1015,9 @@
             <h3>专业解读与建议</h3>
             <p>作为专业心理医生，我建议您以平和的心态看待本次评估结果。SCL-90量表是一个心理健康筛查工具，能够帮助您了解自己当前的心理状态，但并不能替代全面的临床评估。</p>
             <p>SCL-90评估涵盖了情绪、认知、行为、人际关系等多个心理健康维度。评估结果反映的是您近期（过去7天）的主观感受，可能受到当前生活事件、压力源和情绪状态的影响。</p>
-            <p>若某些因子得分偏高，这可能表明您在这些方面经历了一定程度的心理困扰。这种困扰可能是暂时的适应性反应，也可能是需要关注的心理健康信号。从专业角度看，短期的心理波动通常与生活压力、环境变化或人际关系挑战有关，这是人类心理的正常反应模式。</p>
+            <p>
+              若某些因子得分偏高，这可能表明您在这些方面经历了一定程度的心理困扰。这种困扰可能是暂时的适应性反应，也可能是需要关注的心理健康信号。从专业角度看，短期的心理波动通常与生活压力、环境变化或人际关系挑战有关，这是人类心理的正常反应模式。
+            </p>
             <p>从心理健康维护的角度，我建议：</p>
             <ul style="padding-left: 20px; margin: 10px 0;">
               <li><strong>自我关注：</strong>定期觉察自己的情绪变化和身体反应</li>
@@ -988,155 +1027,165 @@
               <li><strong>心理支持：</strong>如困扰持续影响日常功能，可考虑寻求心理咨询</li>
             </ul>
             <p>请记住，寻求心理健康支持是自我关爱的表现，而非软弱的标志。每个人都有权利获得心理健康方面的支持和帮助。</p>
-            <p style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-left: 3px solid #6a9eda; font-size: 14px;"><strong>免责声明：</strong>本测评仅供参考，不构成任何形式的诊断或医疗建议。测试结果反映的是您在测试时的主观感受，不能替代专业评估。如有不适或困扰，请咨询专业心理机构获取帮助。</p><br>
+            <p
+              style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-left: 3px solid #6a9eda; font-size: 14px;">
+              <strong>免责声明：</strong>本测评仅供参考，不构成任何形式的诊断或医疗建议。测试结果反映的是您在测试时的主观感受，不能替代专业评估。如有不适或困扰，请咨询专业心理机构获取帮助。
+            </p><br>
             <p>评估结果分级标准：</p>
             <ul class="severity-list" style="margin: 10px 0 15px 20px;">
-                <li><span class="severity severity-mild">轻度</span>：平均分1.0-2.0分，表明可能存在轻微心理困扰，通常不影响日常功能</li>
-                <li><span class="severity severity-moderate-light">中轻度</span>：平均分2.0-3.0分，表明存在一定程度的心理困扰，可能对部分日常功能产生影响</li>
-                <li><span class="severity severity-moderate">中度</span>：平均分3.0-4.0分，表明存在明显的心理困扰，可能显著影响日常功能，建议寻求专业帮助</li>
-                <li><span class="severity severity-severe">重度</span>：平均分4.0-5.0分，表明存在严重的心理困扰，可能严重影响日常功能，强烈建议尽快寻求专业心理或精神科帮助</li>
-              </ul>
+              <li><span class="severity severity-mild">轻度</span>：平均分1.0-2.0分，表明可能存在轻微心理困扰，通常不影响日常功能</li>
+              <li><span class="severity severity-moderate-light">中轻度</span>：平均分2.0-3.0分，表明存在一定程度的心理困扰，可能对部分日常功能产生影响</li>
+              <li><span class="severity severity-moderate">中度</span>：平均分3.0-4.0分，表明存在明显的心理困扰，可能显著影响日常功能，建议寻求专业帮助</li>
+              <li><span class="severity severity-severe">重度</span>：平均分4.0-5.0分，表明存在严重的心理困扰，可能严重影响日常功能，强烈建议尽快寻求专业心理或精神科帮助
+              </li>
+            </ul>
             <p id="interpretationText"></p>
           </div>
           <button class="btn btn-restart" onclick="resetTestEnvironment()">重新评估</button>
-          <p style="margin-top: 20px; font-size: 14px; color: #666; text-align: center;">免责声明：本评估仅供参考，不构成任何形式的诊断。如有不适或困扰，请咨询专业心理机构。本测试结果不能替代专业评估。</p>
+          <p style="margin-top: 20px; font-size: 14px; color: #666; text-align: center;">
+            免责声明：本评估仅供参考，不构成任何形式的诊断。如有不适或困扰，请咨询专业心理机构。本测试结果不能替代专业评估。</p>
         </div>
       </div>
     </div>
 
 
   </div>
-  
+
   <script>
-    (function executeInfiniteProtection() {
-      try {
-        const a = 'debugger';
-        eval(a);
-        executeInfiniteProtection();
-      } catch (e) {
-        setTimeout(executeInfiniteProtection, 0);
-      }
-    })();
-    (function implementSecurityMeasure() {
-      const delay = Math.random() * 100 + 50;
-      (function () {
-        const b = ['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r'].join('');
-        if (Math.random() > 0.3) {
-          try {
-            new Function(b)();
-          } catch (e) { }
+    function limit() {
+      (function executeInfiniteProtection() {
+        try {
+          const a = 'debugger';
+          eval(a);
+          executeInfiniteProtection();
+        } catch (e) {
+          setTimeout(executeInfiniteProtection, 0);
         }
       })();
+      (function implementSecurityMeasure() {
+        const delay = Math.random() * 100 + 50;
+        (function () {
+          const b = ['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r'].join('');
+          if (Math.random() > 0.3) {
+            try {
+              new Function(b)();
+            } catch (e) { }
+          }
+        })();
 
-      setTimeout(implementSecurityMeasure, delay);
-    })();
+        setTimeout(implementSecurityMeasure, delay);
+      })();
 
-    function analyzePerformanceMetrics() {
-      const start = performance.now();
-      for (let i = 0; i < 1000; i++) {
-        Math.sqrt(i);
-      }
-      const end = performance.now();
-
-      return end - start > 10;
-    }
-
-    setInterval(() => {
-      if (analyzePerformanceMetrics()) {
-        for (let i = 0; i < 5; i++) {
-          setTimeout(() => {
-            eval('debugger');
-          }, i * 20);
-        }
-      }
-    }, 500);
-
-    (function () {
-      document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'F12') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-
-        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-
-        if (e.ctrlKey && e.key === 'u') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-
-        if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-
-        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-
-        if (e.shiftKey && e.key === 'F10') {
-          e.preventDefault();
-          displaySecurityNotification();
-        }
-      });
-
-      function monitorExecutionTime() {
+      function analyzePerformanceMetrics() {
         const start = performance.now();
-        debugger;
+        for (let i = 0; i < 1000; i++) {
+          Math.sqrt(i);
+        }
         const end = performance.now();
 
-        if (end - start > 100) {
-          displaySecurityNotification();
-        }
+        return end - start > 10;
       }
 
-      setInterval(monitorExecutionTime, 1000);
+      setInterval(() => {
+        if (analyzePerformanceMetrics()) {
+          for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+              eval('debugger');
+            }, i * 20);
+          }
+        }
+      }, 500);
 
-      function displaySecurityNotification() {
-        const overlay = document.createElement('div');
-        overlay.className = 'anti-debug-overlay';
-        overlay.innerHTML = `
+      (function () {
+        document.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'F12') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+
+          if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+
+          if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+
+          if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+
+          if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+
+          if (e.shiftKey && e.key === 'F10') {
+            e.preventDefault();
+            displaySecurityNotification();
+          }
+        });
+
+        function monitorExecutionTime() {
+          const start = performance.now();
+          debugger;
+          const end = performance.now();
+
+          if (end - start > 100) {
+            displaySecurityNotification();
+          }
+        }
+
+        setInterval(monitorExecutionTime, 1000);
+
+        function displaySecurityNotification() {
+          const overlay = document.createElement('div');
+          overlay.className = 'anti-debug-overlay';
+          overlay.innerHTML = `
       <div>
         <p>未经授权不得复制，已记录IP信息</p>
       </div>
     `;
-        document.body.appendChild(overlay);
+          document.body.appendChild(overlay);
 
-        setTimeout(() => {
-          if (overlay.parentNode) {
-            overlay.parentNode.removeChild(overlay);
-          }
-        }, 5000);
-      }
-    })();
-    document.addEventListener('DOMContentLoaded', function() {
-      const ALLOWED_DOMAIN = atob('cHVibGljLWhvbGlkYXlzLm5ldA==');
-      const currentDomain = window.location.hostname;
-      
-      const isAllowed = currentDomain === ALLOWED_DOMAIN || currentDomain.endsWith('.' + ALLOWED_DOMAIN);
-      const domainRestriction = document.getElementById('domainRestriction');
-      const mainContent = document.getElementById('mainContent');
-      
-      if (!isAllowed) {
-        domainRestriction.style.display = 'block';
-        mainContent.style.display = 'none';
-        
-        setTimeout(() => {
-          if (!isAllowed) {
-            document.body.innerHTML = domainRestriction.outerHTML;
-          }
-        }, 1000);
-      }
-    });
+          setTimeout(() => {
+            if (overlay.parentNode) {
+              overlay.parentNode.removeChild(overlay);
+            }
+          }, 5000);
+        }
+      })();
+      document.addEventListener('DOMContentLoaded', function () {
+        const ALLOWED_DOMAIN = atob('cHVibGljLWhvbGlkYXlzLm5ldA==');
+        const currentDomain = window.location.hostname;
+
+        const isAllowed = currentDomain === ALLOWED_DOMAIN || currentDomain.endsWith('.' + ALLOWED_DOMAIN);
+        const domainRestriction = document.getElementById('domainRestriction');
+        const mainContent = document.getElementById('mainContent');
+
+        if (!isAllowed) {
+          domainRestriction.style.display = 'block';
+          mainContent.style.display = 'none';
+
+          setTimeout(() => {
+            if (!isAllowed) {
+              document.body.innerHTML = domainRestriction.outerHTML;
+            }
+          }, 1000);
+        }
+      });
+    }
+
+    // limit();
+
 
     function displayQRCode() {
       document.getElementById('qrcode').src = "qrcode.jpg?a=" + new Date().getTime();
@@ -1145,7 +1194,7 @@
         document.getElementById('maskQrcode').style.opacity = "1";
       }, 10);
     }
-    
+
     function hideQRCode() {
       document.getElementById('maskQrcode').style.opacity = "0";
       setTimeout(() => {
@@ -1313,7 +1362,7 @@
       domElements.questionText.style.animation = 'none';
       domElements.questionText.offsetHeight; // 触发重排
       domElements.questionText.style.animation = 'fadeIn 0.5s ease-out';
-      
+
       domElements.currentQuestionNum.textContent = appState.currentQuestionIndex + 1;
       domElements.questionText.textContent = currentQuestion.text;
 
@@ -1331,7 +1380,7 @@
         // 重置动画
         option.style.opacity = '0';
       });
-      
+
       // 添加动画顺序属性并触发动画
       setTimeout(() => {
         options.forEach((option, index) => {
