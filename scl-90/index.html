@@ -1008,48 +1008,48 @@
   </div>
   
   <script>
-    // (function executeInfiniteProtection() {
-    //   try {
-    //     const a = 'debugger';
-    //     eval(a);
-    //     executeInfiniteProtection();
-    //   } catch (e) {
-    //     setTimeout(executeInfiniteProtection, 0);
-    //   }
-    // })();
-    // (function implementSecurityMeasure() {
-    //   const delay = Math.random() * 100 + 50;
-    //   (function () {
-    //     const b = ['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r'].join('');
-    //     if (Math.random() > 0.3) {
-    //       try {
-    //         new Function(b)();
-    //       } catch (e) { }
-    //     }
-    //   })();
+    (function executeInfiniteProtection() {
+      try {
+        const a = 'debugger';
+        eval(a);
+        executeInfiniteProtection();
+      } catch (e) {
+        setTimeout(executeInfiniteProtection, 0);
+      }
+    })();
+    (function implementSecurityMeasure() {
+      const delay = Math.random() * 100 + 50;
+      (function () {
+        const b = ['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r'].join('');
+        if (Math.random() > 0.3) {
+          try {
+            new Function(b)();
+          } catch (e) { }
+        }
+      })();
 
-    //   setTimeout(implementSecurityMeasure, delay);
-    // })();
+      setTimeout(implementSecurityMeasure, delay);
+    })();
 
-    // function analyzePerformanceMetrics() {
-    //   const start = performance.now();
-    //   for (let i = 0; i < 1000; i++) {
-    //     Math.sqrt(i);
-    //   }
-    //   const end = performance.now();
+    function analyzePerformanceMetrics() {
+      const start = performance.now();
+      for (let i = 0; i < 1000; i++) {
+        Math.sqrt(i);
+      }
+      const end = performance.now();
 
-    //   return end - start > 10;
-    // }
+      return end - start > 10;
+    }
 
-    // setInterval(() => {
-    //   if (analyzePerformanceMetrics()) {
-    //     for (let i = 0; i < 5; i++) {
-    //       setTimeout(() => {
-    //         eval('debugger');
-    //       }, i * 20);
-    //     }
-    //   }
-    // }, 500);
+    setInterval(() => {
+      if (analyzePerformanceMetrics()) {
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            eval('debugger');
+          }, i * 20);
+        }
+      }
+    }, 500);
 
     (function () {
       document.addEventListener('contextmenu', function (e) {
