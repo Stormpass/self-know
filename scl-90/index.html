@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script>
+    
+  </script>
+  <title>SCL-90症状自评量表</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      user-select: none;
+    }
+
+    :root {
+      --primary-color: #6a9eda;
+      --primary-light: #e8f1fd;
+      --secondary-color: #f9a826;
+      --text-color: #2d3748;
+      --text-light: #718096;
+      --background-color: #f7fafc;
+      --card-color: #ffffff;
+      --border-radius: 12px;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --transition: all 0.3s ease;
+      --title-shadow: 0 5px 15px rgba(106, 158, 218, 0.3);
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-touch-callout: none;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      background-image: linear-gradient(120deg, #f7fafc 0%, #e6f2ff 100%);
+    }
+
+    .domain-restriction {
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+
+    .domain-restriction h2 {
+      color: #dc3545;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .domain-restriction p {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+    .severity-list > li{
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .page-container {
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background-color: var(--card-color);
+      width: 100%;
+      max-width: 900px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      margin-bottom: 20px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background-color: var(--primary-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: var(--primary-color);
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 4px;
+    }
+
+    .countdown {
+      display: none;
+      text-align: right;
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 10px;
+      height: 20px;
+    }
+
+    .content {
+      padding: 30px 25px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--text-color);
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    @keyframes titleShine {
+      0% {
+        background-position: -100% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+    
+    /* @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateZ(0);
+      }
+      50% {
+        transform: translateY(-5px) translateZ(0);
+      }
+    } */
+    
+    h1 {
+      font-size: 32px;
+      margin: 15px 0 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 15px 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-color), #2c5282, var(--primary-color));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      border-bottom: 3px solid var(--primary-light);
+      position: relative;
+      overflow: hidden;
+      animation: titleShine 3s linear infinite, float 3s ease-in-out infinite;
+      box-shadow: var(--title-shadow);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+    
+    h1::before, h1::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 30px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      transition: all 0.5s ease;
+    }
+    
+    h1::before {
+      left: 0;
+    }
+    
+    h1::after {
+      right: 0;
+    }
+    
+    h1:hover::before {
+      width: 50px;
+    }
+    
+    h1:hover::after {
+      width: 50px;
+    }
+    
+    .title-decoration {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      margin: 0 15px;
+      vertical-align: middle;
+    }
+    
+    .title-decoration::before, .title-decoration::after {
+      content: "";
+      position: absolute;
+      background-color: var(--secondary-color);
+      opacity: 0.7;
+    }
+    
+    .title-decoration::before {
+      width: 20px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .title-decoration::after {
+      width: 2px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: var(--primary-color);
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 25px 0 20px;
+      text-align: left;
+      color: var(--primary-color);
+    }
+
+    .intro-section {
+      padding: 35px 30px;
+      text-align: center;
+      display: block;
+    }
+
+    .intro-content {
+      margin-bottom: 30px;
+      background-color: var(--primary-light);
+      padding: 25px;
+      border-radius: var(--border-radius);
+    }
+
+    .intro-text {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      text-align: left;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    .intro-list {
+      text-align: left;
+      margin: 20px 0 20px 25px;
+      line-height: 1.8;
+      font-size: 16px;
+      list-style: none;
+    }
+
+    .intro-list li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 5px;
+    }
+
+    .intro-list li::before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .question-number {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: var(--primary-light);
+      padding: 12px 15px;
+      border-radius: var(--border-radius);
+    }
+
+    .question-text-container {
+      height: calc(2em * 1.8);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .question-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-color);
+      padding: 15px 20px;
+      background-color: var(--card-color);
+      border-radius: var(--border-radius);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--primary-color);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .question-text.long-text::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 30%;
+      height: 1.8em;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
+      pointer-events: none;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .option {
+      padding: 16px 18px;
+      border-radius: var(--border-radius);
+      background-color: var(--card-color);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .option:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .option.active {
+      background-color: var(--primary-light);
+      border-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: 500;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .option:active {
+      background-color: var(--primary-light);
+      border-color: var(--primary-color);
+      transform: translateY(0);
+    }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .option.active .option-letter {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px 0;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      font-size: 16px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-prev {
+      background-color: #edf2f7;
+      color: var(--text-color);
+    }
+
+    .btn-prev:active {
+      background-color: #e2e8f0;
+      transform: translateY(1px);
+    }
+
+    .btn-next {
+      background-color: var(--primary-color);
+      color: white;
+      display: none;
+    }
+
+    .btn-next:active {
+      background-color: #5a8ac5;
+      transform: translateY(1px);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-prev:hover {
+      background-color: #e2e8f0;
+    }
+
+    .btn-next:hover {
+      background-color: #5a8ac5;
+    }
+
+    .btn-start,
+    .btn-restart {
+      background: linear-gradient(135deg, var(--primary-color), #5a8ac5);
+      color: white;
+      margin: 25px auto;
+      display: block;
+      padding: 16px 28px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 320px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(106, 158, 218, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-start:before,
+    .btn-restart:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-start:hover:before,
+    .btn-restart:hover:before {
+      left: 100%;
+    }
+
+    .btn-start:active,
+    .btn-restart:active {
+      background: linear-gradient(135deg, #5a8ac5, var(--primary-color));
+      transform: translateY(2px);
+      box-shadow: 0 2px 5px rgba(106, 158, 218, 0.3);
+    }
+
+    .btn-restart {
+      background: linear-gradient(135deg, var(--secondary-color), #e09422);
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(249, 168, 38, 0.3);
+    }
+
+    .btn-restart:active {
+      background: linear-gradient(135deg, #e09422, var(--secondary-color));
+      box-shadow: 0 2px 5px rgba(249, 168, 38, 0.3);
+    }
+
+    .result-section {
+      display: none;
+    }
+
+    .result-card {
+      padding: 30px;
+    }
+
+    .total-score {
+      text-align: center;
+      margin: 30px 0;
+      padding: 25px;
+      background-color: var(--primary-light);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .total-score-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 15px 0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 25px 0 30px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .factors-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      margin: 0 auto;
+      background-color: var(--card-color);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .factors-table th,
+    .factors-table td {
+      padding: 15px 12px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
+    }
+
+    .factors-table th:first-child,
+    .factors-table td:first-child {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .factors-table th {
+      background-color: var(--primary-light);
+      font-weight: 600;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .factors-table tr:hover {
+      background-color: #f8fafc;
+    }
+    
+    .factors-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .severity {
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-block;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .severity-mild {
+      background-color: #4caf50;
+      background-image: linear-gradient(135deg, #4caf50, #66bb6a);
+    }
+
+    .severity-moderate-light {
+      background-color: #8bc34a;
+      background-image: linear-gradient(135deg, #8bc34a, #9ccc65);
+      color: #1b5e20;
+    }
+
+    .severity-moderate {
+      background-color: #ff9800;
+      background-image: linear-gradient(135deg, #ff9800, #ffa726);
+    }
+
+    .severity-severe {
+      background-color: #f44336;
+      background-image: linear-gradient(135deg, #f44336, #ef5350);
+    }
+
+    .interpretation {
+      background-color: var(--primary-light);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      margin: 25px 0;
+      line-height: 1.8;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .interpretation h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .interpretation p {
+      margin-bottom: 15px;
+    }
+
+    .factor-description {
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--text-light);
+      padding-left: 15px;
+      border-left: 3px solid var(--primary-color);
+      line-height: 1.7;
+    }
+
+    .factor-description-container {
+      margin: 18px 0;
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .factor-description-container:last-child {
+      border-bottom: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .question-container,
+    .result-card,
+    .intro-section {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .option {
+      animation: slideIn 0.3s ease forwards;
+      animation-delay: calc(0.05s * var(--animation-order, 0));
+      opacity: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .anti-debug-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* QR Code Modal */
+    #maskQrcode {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    .qrcode-container {
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      max-width: 90%;
+      width: 350px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .qrcode-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .qrcode-container h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+    
+    .qrcode-container p {
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    
+    .close-qrcode {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: var(--primary-color);
+      font-weight: bold;
+      border: none;
+      font-size: 18px;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+      .content,
+      .intro-section,
+      .result-card {
+        padding: 40px;
+      }
+
+      .question-text {
+        font-size: 20px;
+        padding: 20px 25px;
+      }
+
+      .options {
+        gap: 15px;
+      }
+
+      .option {
+        padding: 18px 22px;
+        font-size: 17px;
+      }
+
+      .factors-table {
+        font-size: 16px;
+      }
+      
+      .question-text-container {
+        height: calc(2em * 1.8);
+        margin-bottom: 35px;
+      }
+      
+      .intro-content {
+        padding: 35px;
+      }
+      
+      .btn {
+        padding: 16px 0;
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .factors-table th,
+      .factors-table td {
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+
+      .severity {
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+
+      .question-text-container {
+        height: calc(2em * 1.8);
+      }
+      
+      .question-text {
+        font-size: 16px;
+        padding: 12px 15px;
+      }
+      
+      .option {
+        padding: 14px 16px;
+      }
+      
+      .btn {
+        padding: 12px 0;
+      }
+      
+      .btn-start, .btn-restart {
+        padding: 14px 20px;
+        font-size: 16px;
+      }
+      
+      .interpretation {
+        padding: 20px;
+        font-size: 15px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="domain-restriction" id="domainRestriction">
+    <h2>访问受限</h2>
+    <p>请通过官方渠道访问</p>
+  </div>
+
+  <div class="page-container" id="mainContent">
+    <div class="card">
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="intro-section" id="introSection">
+        <h1><span class="title-decoration"></span>SCL-90症状自评量表<span class="title-decoration"></span></h1>
+        <div class="intro-content" id="introContent">
+          <p class="intro-text">
+            SCL-90（Symptom Checklist 90）是国际公认的心理健康评估工具，由90个精心设计的问题组成，全面评估个体在情绪、认知、行为、人际关系、躯体感受等多个心理维度的状态。</p>
+          <p class="intro-text">本量表作为专业心理筛查工具，旨在帮助您了解自己当前的心理健康状况，识别可能存在的情绪困扰。测评结果仅作为心理健康参考，不构成临床诊断依据。如有持续困扰，建议咨询专业心理医生。
+          </p>
+          <p class="intro-text">请您放松心情，根据<strong>最近7天（包括今天）</strong>的真实感受，选择最符合您状态的选项。答案无对错之分，请根据第一反应作答。</p>
+          <ul class="intro-list">
+            <li>A、从无：完全没有或极少出现此症状</li>
+            <li>B、很轻：偶尔出现，但不影响日常生活</li>
+            <li>C、中等：明显存在，有时会影响日常功能</li>
+            <li>D、偏重：频繁出现，显著影响日常生活</li>
+            <li>E、严重：持续存在，严重干扰正常生活</li>
+          </ul>
+        </div>
+        <button class="btn btn-start" id="startBtn">开始心理评估</button>
+      </div>
+
+      <div class="content question-container hidden" id="questionContainer">
+        <div class="countdown" id="countdown"></div>
+        <div class="question-number">
+          <span>第 <span id="currentQuestionNum">1</span> 题</span>
+          <span>共 90 题</span>
+        </div>
+        <div class="question-text-container">
+          <div class="question-text" id="questionText"></div>
+        </div>
+        <div class="options" id="optionsContainer">
+          <div class="option" data-point="1" onclick="processOptionSelection(this)" style="touch-action: manipulation;">
+            <span class="option-letter">A</span>
+            <span>从无</span>
+            <small>（完全没有）</small>
+          </div>
+          <div class="option" data-point="2" onclick="processOptionSelection(this)" style="touch-action: manipulation;">
+            <span class="option-letter">B</span>
+            <span>很轻</span>
+            <small>（偶尔出现）</small>
+          </div>
+          <div class="option" data-point="3" onclick="processOptionSelection(this)" style="touch-action: manipulation;">
+            <span class="option-letter">C</span>
+            <span>中等</span>
+            <small>（明显存在）</small>
+          </div>
+          <div class="option" data-point="4" onclick="processOptionSelection(this)" style="touch-action: manipulation;">
+            <span class="option-letter">D</span>
+            <span>偏重</span>
+            <small>（频繁出现）</small>
+          </div>
+          <div class="option" data-point="5" onclick="processOptionSelection(this)" style="touch-action: manipulation;">
+            <span class="option-letter">E</span>
+            <span>严重</span>
+            <small>（持续存在）</small>
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="btn btn-prev" onclick="navigateToPreviousQuestion()">
+            <span>&lt;</span> 上一题
+          </button>
+          <button class="btn btn-next" onclick="navigateToNextQuestion()">
+            下一题 <span>&gt;&gt;</span>
+          </button>
+          <p style="margin-top: 15px; font-size: 13px; color: #666; text-align: center;">请根据您的真实感受作答，答案无对错之分</p>
+        </div>
+      </div>
+
+      <div class="result-section" id="resultSection">
+        <div class="result-card">
+          <h2>专业心理健康评估报告</h2>
+          <p style="text-align:center; color:#666; margin-top:-5px; margin-bottom:15px;">（本报告仅作参考，不构成临床诊断依据）</p>
+          <div class="total-score">
+            <p>SCL-90总分评估</p>
+            <p class="total-score-value" id="totalScore"></p>
+            <p>单项平均分: <span id="averageScore"></span> <small style="color:#666;">(参考值: 正常<2.0)</small></p>
+          </div>
+
+          <h3>心理健康维度评估</h3>
+          <div class="table-container">
+            <table class="factors-table">
+              <thead>
+                <tr>
+                  <th>心理维度</th>
+                  <th>总分</th>
+                  <th>平均分</th>
+                  <th>评估结果</th>
+                </tr>
+              </thead>
+              <tbody id="factorsTableBody">
+              </tbody>
+            </table>
+          </div>
+
+          <div id="factorDescriptions">
+            <h3>维度解析与专业建议</h3>
+          </div>
+
+          <div class="interpretation">
+            <h3>专业解读与建议</h3>
+            <p>作为专业心理医生，我建议您以平和的心态看待本次评估结果。SCL-90量表是一个心理健康筛查工具，能够帮助您了解自己当前的心理状态，但并不能替代全面的临床评估。</p>
+            <p>SCL-90评估涵盖了情绪、认知、行为、人际关系等多个心理健康维度。评估结果反映的是您近期（过去7天）的主观感受，可能受到当前生活事件、压力源和情绪状态的影响。</p>
+            <p>若某些因子得分偏高，这可能表明您在这些方面经历了一定程度的心理困扰。这种困扰可能是暂时的适应性反应，也可能是需要关注的心理健康信号。从专业角度看，短期的心理波动通常与生活压力、环境变化或人际关系挑战有关，这是人类心理的正常反应模式。</p>
+            <p>从心理健康维护的角度，我建议：</p>
+            <ul style="padding-left: 20px; margin: 10px 0;">
+              <li><strong>自我关注：</strong>定期觉察自己的情绪变化和身体反应</li>
+              <li><strong>健康生活方式：</strong>保持规律作息、均衡饮食和适度运动</li>
+              <li><strong>压力管理：</strong>学习呼吸放松、正念冥想等减压技巧</li>
+              <li><strong>社会支持：</strong>与亲友保持良好沟通，适当表达情感需求</li>
+              <li><strong>心理支持：</strong>如困扰持续影响日常功能，可考虑寻求心理咨询</li>
+            </ul>
+            <p>请记住，寻求心理健康支持是自我关爱的表现，而非软弱的标志。每个人都有权利获得心理健康方面的支持和帮助。</p>
+            <p style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-left: 3px solid #6a9eda; font-size: 14px;"><strong>免责声明：</strong>本测评仅供参考，不构成任何形式的诊断或医疗建议。测试结果反映的是您在测试时的主观感受，不能替代专业评估。如有不适或困扰，请咨询专业心理机构获取帮助。</p><br>
+            <p>评估结果分级标准：</p>
+            <ul class="severity-list" style="margin: 10px 0 15px 20px;">
+                <li><span class="severity severity-mild">轻度</span>：平均分1.0-2.0分，表明可能存在轻微心理困扰，通常不影响日常功能</li>
+                <li><span class="severity severity-moderate-light">中轻度</span>：平均分2.0-3.0分，表明存在一定程度的心理困扰，可能对部分日常功能产生影响</li>
+                <li><span class="severity severity-moderate">中度</span>：平均分3.0-4.0分，表明存在明显的心理困扰，可能显著影响日常功能，建议寻求专业帮助</li>
+                <li><span class="severity severity-severe">重度</span>：平均分4.0-5.0分，表明存在严重的心理困扰，可能严重影响日常功能，强烈建议尽快寻求专业心理或精神科帮助</li>
+              </ul>
+            <p id="interpretationText"></p>
+          </div>
+          <div  class="btn btn-restart" style="text-align: center;" onclick="displayQRCode()">获取心理分析报告</div>
+          <button class="btn btn-restart" onclick="resetTestEnvironment()">重新评估</button>
+          <p style="margin-top: 20px; font-size: 14px; color: #666; text-align: center;">免责声明：本评估仅供参考，不构成任何形式的诊断。如有不适或困扰，请咨询专业心理机构。本测试结果不能替代专业评估。</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  
+  <div id="maskQrcode" onclick="hideQRCode()">
+    <div class="qrcode-container" onclick="event.stopPropagation()">
+      <button class="close-qrcode" onclick="hideQRCode()">×</button>
+      <h3>心理健康评估报告</h3>
+      <p>扫描下方二维码，获取详细分析和个性化改善建议</p>
+      <img id="qrcode" src="" alt="心理健康评估二维码">
+      <p style="margin-top: 15px; font-size: 13px; color: #666;">报告内容包括：</p>
+      <ul style="text-align: left; font-size: 13px; color: #555; padding-left: 20px;">
+        <li>详细的SCL-90各维度分析解读</li>
+        <li>针对性的心理健康改善建议</li>
+        <li>心理健康咨询资源推荐</li>
+        <li>个性化的心理健康管理方案</li>
+      </ul>
+      <p style="margin-top: 10px; font-size: 12px; color: #888; text-align: center;">免责声明：本报告仅供参考，不构成任何形式的诊断。如有不适，请咨询专业心理机构。</p>
+    </div>
+  </div>
+  
+  <script>
+    // (function executeInfiniteProtection() {
+    //   try {
+    //     const a = 'debugger';
+    //     eval(a);
+    //     executeInfiniteProtection();
+    //   } catch (e) {
+    //     setTimeout(executeInfiniteProtection, 0);
+    //   }
+    // })();
+    // (function implementSecurityMeasure() {
+    //   const delay = Math.random() * 100 + 50;
+    //   (function () {
+    //     const b = ['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r'].join('');
+    //     if (Math.random() > 0.3) {
+    //       try {
+    //         new Function(b)();
+    //       } catch (e) { }
+    //     }
+    //   })();
+
+    //   setTimeout(implementSecurityMeasure, delay);
+    // })();
+
+    // function analyzePerformanceMetrics() {
+    //   const start = performance.now();
+    //   for (let i = 0; i < 1000; i++) {
+    //     Math.sqrt(i);
+    //   }
+    //   const end = performance.now();
+
+    //   return end - start > 10;
+    // }
+
+    // setInterval(() => {
+    //   if (analyzePerformanceMetrics()) {
+    //     for (let i = 0; i < 5; i++) {
+    //       setTimeout(() => {
+    //         eval('debugger');
+    //       }, i * 20);
+    //     }
+    //   }
+    // }, 500);
+
+    (function () {
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'F12') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+
+        if (e.ctrlKey && e.key === 'u') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+
+        if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+
+        if (e.shiftKey && e.key === 'F10') {
+          e.preventDefault();
+          displaySecurityNotification();
+        }
+      });
+
+      function monitorExecutionTime() {
+        const start = performance.now();
+        debugger;
+        const end = performance.now();
+
+        if (end - start > 100) {
+          displaySecurityNotification();
+        }
+      }
+
+      setInterval(monitorExecutionTime, 1000);
+
+      function displaySecurityNotification() {
+        const overlay = document.createElement('div');
+        overlay.className = 'anti-debug-overlay';
+        overlay.innerHTML = `
+      <div>
+        <p>未经授权不得复制，已记录IP信息</p>
+      </div>
+    `;
+        document.body.appendChild(overlay);
+
+        setTimeout(() => {
+          if (overlay.parentNode) {
+            overlay.parentNode.removeChild(overlay);
+          }
+        }, 5000);
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const ALLOWED_DOMAIN = atob('bGZ0YW8udmlw=');
+      const currentDomain = window.location.hostname;
+      
+      const isAllowed = currentDomain === ALLOWED_DOMAIN || currentDomain.endsWith('.' + ALLOWED_DOMAIN);
+      const domainRestriction = document.getElementById('domainRestriction');
+      const mainContent = document.getElementById('mainContent');
+      
+      if (!isAllowed) {
+        domainRestriction.style.display = 'block';
+        mainContent.style.display = 'none';
+        
+        setTimeout(() => {
+          if (!isAllowed) {
+            document.body.innerHTML = domainRestriction.outerHTML;
+          }
+        }, 1000);
+      }
+    });
+
+    function displayQRCode() {
+      document.getElementById('qrcode').src = "qrcode.jpg?a=" + new Date().getTime();
+      document.getElementById('maskQrcode').style.display = "flex";
+      setTimeout(() => {
+        document.getElementById('maskQrcode').style.opacity = "1";
+      }, 10);
+    }
+    
+    function hideQRCode() {
+      document.getElementById('maskQrcode').style.opacity = "0";
+      setTimeout(() => {
+        document.getElementById('maskQrcode').style.display = "none";
+      }, 300);
+    }
+
+    const questionStr = '头痛；神经过敏，心中不踏实；头脑中有不必要的想法或字句盘旋；头晕或晕倒；对异性的兴趣减退；对旁人责备求全；感到别人能控制您的思想；责怪别人制造麻烦；忘性大；担心自己的衣饰整齐及仪态的端正；容易烦恼和激动；胸痛；害怕空旷的场所或街道；感到自己的精力下降，活动减慢；想结束自己的生命；听到旁人听不到的声音；发抖；感到大多数人都不可信任；胃口不好；容易哭泣；同异性相处时感到害羞不自在；感到受骗，中了圈套或有人想抓住您；无缘无故地突然感到害怕；自己不能控制地大发脾气；怕单独出门；经常责怪自己；腰痛；感到难以完成任务；感到孤独；感到苦闷；过分担忧；对事物不感兴趣；感到害怕；您的感情容易受到伤害；旁人能知道您的私下想法；感到别人不理解您、不同情您；感到人们对您不友好，不喜欢您；做事必须做得很慢以保证做得正确；心跳得很厉害；恶心或胃部不舒服；感到比不上他人；肌肉酸痛；感到有人在监视您、谈论您；难以入睡；做事必须反复检查；难以做出决定；怕乘电车、公共汽车、地铁或火车；呼吸有困难；一阵阵发冷或发热；因为感到害怕而避开某些东西、场合或活动；脑子变空了；身体发麻或刺痛；喉咙有梗塞感；感到前途没有希望；不能集中注意力；感到身体的某一部分软弱无力；感到紧张或容易紧张；感到手或脚发重；想到死亡的事；吃得太多；当别人看着您或谈论您时感到不自在；有一些不属于您自己的想法；有想打人或伤害他人的冲动；醒得太早；必须反复洗手、点数；睡得不稳不深；有想摔坏或破坏东西的想法；有一些别人没有的想法；感到对别人神经过敏；在商店或电影院等人多的地方感到不自在；感到任何事情都很困难；一阵阵恐惧或惊恐；感到公共场合吃东西很不舒服；经常与人争论；单独一人时神经很紧张；别人对您的成绩没有做出恰当的评价；即使和别人在一起也感到孤单；感到坐立不安心神不定；感到自己没有什么价值；感到熟悉的东西变成陌生或不像是真的；大叫或摔东西；害怕会在公共场合晕倒；感到别人想占您的便宜；为一些有关性的想法而很苦恼；您认为应该因为自己的过错而受到惩罚；感到要很快把事情做完；感到自己的身体有严重问题；从未感到和其他人很亲近；感到自己有罪；感到自己的脑子有毛病';
+
+    const interpretationText = '根据SCL-90量表参考标准，结果解读如下：<br/>• <strong>总分低于160分，各因子均分低于2分</strong>：表明您目前心理状态可能处于健康范围，建议继续保持良好的生活习惯和积极的心态。<br/>• <strong>总分在160-200分之间，或任一因子均分达到或超过2分</strong>：表明您可能存在轻度心理困扰，建议关注自身情绪变化，适当进行自我调节，如规律作息、适度运动、社交支持等。<br/>• <strong>总分在200-250分之间</strong>：表明您可能存在明显的心理健康问题，建议寻求心理咨询的帮助，了解困扰的根源并获取支持。<br/>• <strong>总分超过250分</strong>：表明您可能存在较为严重的心理健康问题，建议咨询专业心理机构，获取评估和建议。<br/><br/><strong>免责声明</strong>：本测评结果仅供参考，不构成任何形式的诊断。心理健康是一个复杂的议题，受多种因素影响。如有不适或困扰，请咨询专业心理机构。本测试结果不能替代专业评估。';
+
+    const factorGroups = [
+      {
+        name: '躯体化',
+        questionIndices: [0, 3, 11, 26, 39, 41, 47, 48, 51, 52, 55, 57],
+        total: 0,
+        description: '躯体化是指心理压力可能表现为身体不适感的现象。表现为头痛、胸痛、肌肉酸痛等生理症状。高分可能表明您的情绪困扰以身体不适的形式表达出来，可以尝试学习情绪识别和压力管理技巧，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '强迫症状',
+        questionIndices: [2, 8, 9, 27, 37, 44, 45, 50, 54, 64],
+        total: 0,
+        description: '强迫症状表现为反复出现的不必要思想或行为，如过度检查、反复洗手、反复计数等。这些想法和行为虽然被认识到是不合理的，但难以控制。高分可能表明您存在强迫特质或倾向，可以尝试学习放松技巧和思维调整方法，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '人际关系敏感',
+        questionIndices: [5, 20, 33, 35, 36, 40, 60, 68, 72],
+        total: 0,
+        description: '人际关系敏感反映个体在社交互动中的不适感、自卑感和敏感性。表现为关注他人评价、担心被拒绝、人际交往中感到紧张不安等。高分可能表明您在社交场合中容易感到不自在，可以尝试培养自我接纳和社交技能，逐步参与社交活动，必要时寻求支持。'
+      },
+      {
+        name: '抑郁症状',
+        questionIndices: [4, 13, 14, 19, 21, 25, 28, 29, 30, 31, 53, 70, 78],
+        total: 0,
+        description: '抑郁症状包括情绪低落、兴趣减退、精力不足、自我评价低、睡眠和食欲改变等。严重时可能出现无望感和消极想法。高分可能表明您存在抑郁情绪，可以尝试增加愉悦活动、保持规律作息、寻求社会支持，如症状持续且明显影响生活，建议寻求心理咨询支持。'
+      },
+      {
+        name: '焦虑症状',
+        questionIndices: [1, 16, 22, 32, 38, 56, 71, 77, 79, 85],
+        total: 0,
+        description: '焦虑症状表现为担忧、紧张不安、神经过敏和身体症状（如心悸、出汗、呼吸急促等）。高分可能表明您存在焦虑情绪，可以尝试学习呼吸放松技术、正念冥想等减压方法，保持规律运动，减少咖啡因摄入，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '敌对症状',
+        questionIndices: [10, 23, 62, 66, 73, 80],
+        total: 0,
+        description: '敌对症状反映个体的愤怒情绪和攻击性倾向，表现为易怒、冲动、言语或行为上的攻击性等。高分可能表明您在情绪调节方面有一定困难，特别是在愤怒管理方面。可以尝试学习情绪识别和调节技巧，如深呼吸、暂时离开激怒情境、理性思考等，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '恐怖症状',
+        questionIndices: [12, 24, 46, 49, 69, 74, 81],
+        total: 0,
+        description: '恐怖症状指对特定对象或情境的强烈恐惧，如对开放空间、密闭空间、公共交通工具、人群等的恐惧，往往导致回避行为。高分可能表明您对某些特定情境有恐惧倾向，可以尝试逐步接触恐惧对象的方法和调整思维方式，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '偏执症状',
+        questionIndices: [7, 17, 42, 67, 75, 82],
+        total: 0,
+        description: '偏执症状表现为猜疑、警惕和敏感，如怀疑他人有恶意、感到被监视或谈论、对他人的言行过度解读等。高分可能表明您有一定的猜疑倾向，可以尝试学习理性思考和证据评估技巧，培养信任关系，必要时寻求心理咨询支持。'
+      },
+      {
+        name: '精神病性',
+        questionIndices: [6, 15, 34, 61, 76, 83, 84, 86, 87, 89],
+        total: 0,
+        description: '精神病性症状包括感知异常、思维异常和行为异常等。如听到他人听不到的声音、感到思想被控制、有奇怪的想法等。高分可能表明您在这方面有一定困扰，建议寻求专业心理机构的帮助和支持。'
+      },
+      {
+        name: '睡眠饮食',
+        questionIndices: [18, 43, 58, 59, 63, 65, 88],
+        total: 0,
+        description: '睡眠和饮食问题是心理压力的常见表现，如入睡困难、早醒、睡眠质量差、食欲改变等。高分可能表明您的基础生理需求受到一定影响，可以尝试建立规律作息、健康饮食习惯、睡前放松活动，减少屏幕使用，必要时寻求相关支持。'
+      },
+    ];
+
+    let appState = {
+      questions: [],
+      currentQuestionIndex: 0,
+      totalQuestions: 0,
+      isTestStarted: false,
+      isTestCompleted: false,
+      isAutoJump: false
+    };
+
+    const domElements = {
+      introSection: document.getElementById('introSection'),
+      introContent: document.getElementById('introContent'),
+      startBtn: document.getElementById('startBtn'),
+      questionContainer: document.getElementById('questionContainer'),
+      resultSection: document.getElementById('resultSection'),
+      currentQuestionNum: document.getElementById('currentQuestionNum'),
+      questionText: document.getElementById('questionText'),
+      questionTextContainer: document.querySelector('.question-text-container'),
+      optionsContainer: document.getElementById('optionsContainer'),
+      progressBar: document.getElementById('progressBar'),
+      totalScore: document.getElementById('totalScore'),
+      averageScore: document.getElementById('averageScore'),
+      factorsTableBody: document.getElementById('factorsTableBody'),
+      factorDescriptions: document.getElementById('factorDescriptions'),
+      interpretationText: document.getElementById('interpretationText'),
+      countdown: document.getElementById('countdown')
+    };
+
+    function getSeverityLevel(average) {
+      if (average < 2.0) {
+        return { level: '轻度', class: 'severity-mild' };
+      } else if (average < 3.0) {
+        return { level: '中轻度', class: 'severity-moderate-light' };
+      } else if (average < 4.0) {
+        return { level: '中度', class: 'severity-moderate' };
+      } else {
+        return { level: '重度', class: 'severity-severe' };
+      }
+    }
+
+    function initQuestions() {
+      const questionArray = questionStr.split('；')
+        .filter(questionText => questionText.trim() !== '')
+        .map((questionText, index) => {
+          return {
+            index: index,
+            text: questionText,
+            score: null
+          };
+        });
+
+      appState.questions = questionArray;
+      appState.totalQuestions = questionArray.length;
+
+      try {
+        const localappState = localStorage.getItem("appState")
+        if (localappState) {
+          appState = JSON.parse(localappState);
+          appState.isAutoJump = false;
+          if (appState.currentQuestionIndex > 0) {
+            if (appState.currentQuestionIndex < 90) {
+              appState.currentQuestionIndex = appState.currentQuestionIndex + 1;
+            }
+            timeShow(3)
+          }
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    function timeShow(number) {
+      domElements.startBtn.innerHTML = "正在恢复上次测试 " + number + ' ' + "秒...";
+      if (number <= 0) {
+        initializeTestEnvironment()
+        domElements.startBtn.innerHTML = "开始测试"
+        return;
+      }
+      setTimeout(() => {
+        timeShow(--number)
+      }, 1000);
+    }
+
+    function updateQuestionDisplay() {
+      if (appState.currentQuestionIndex >= 90) {
+        finalizeTestResults();
+        return;
+      }
+      const currentQuestion = appState.questions[appState.currentQuestionIndex];
+
+      // 重置问题文本的动画
+      domElements.questionText.style.animation = 'none';
+      domElements.questionText.offsetHeight; // 触发重排
+      domElements.questionText.style.animation = 'fadeIn 0.5s ease-out';
+      
+      domElements.currentQuestionNum.textContent = appState.currentQuestionIndex + 1;
+      domElements.questionText.textContent = currentQuestion.text;
+
+      checkQuestionLength();
+
+      const progressPercentage = ((appState.currentQuestionIndex + 1) / appState.totalQuestions) * 100;
+      domElements.progressBar.style.width = `${progressPercentage}%`;
+
+      domElements.countdown.textContent = '';
+
+      // 清除所有选项的高亮状态
+      const options = domElements.optionsContainer.querySelectorAll('.option');
+      options.forEach(option => {
+        option.classList.remove('active');
+        // 重置动画
+        option.style.opacity = '0';
+      });
+      
+      // 添加动画顺序属性并触发动画
+      setTimeout(() => {
+        options.forEach((option, index) => {
+          option.style.setProperty('--animation-order', index);
+          option.style.opacity = '1';
+        });
+      }, 50);
+
+      // 只给当前题目的已选项添加高亮
+      if (currentQuestion.score !== null) {
+        options.forEach(option => {
+          if (parseInt(option.dataset.point) === currentQuestion.score) {
+            option.classList.add('active');
+          }
+        });
+      }
+
+      const prevBtn = document.querySelector('.btn-prev');
+      prevBtn.disabled = appState.currentQuestionIndex === 0;
+      prevBtn.style.opacity = appState.currentQuestionIndex === 0 ? 0.5 : 1;
+      prevBtn.style.cursor = appState.currentQuestionIndex === 0 ? 'not-allowed' : 'pointer';
+    }
+
+    function checkQuestionLength() {
+      const container = domElements.questionTextContainer;
+      const textElement = domElements.questionText;
+
+      textElement.classList.remove('long-text');
+
+      if (textElement.scrollHeight > container.clientHeight) {
+        textElement.classList.add('long-text');
+      }
+    }
+
+    function processOptionSelection(optionElement) {
+      if (appState.isAutoJump) return;
+
+      // 清除所有选项的高亮状态
+      const options = domElements.optionsContainer.querySelectorAll('.option');
+      options.forEach(option => option.classList.remove('active'));
+
+      // 只给当前选中项添加高亮
+      optionElement.classList.add('active');
+
+      const score = parseInt(optionElement.dataset.point);
+      appState.questions[appState.currentQuestionIndex].score = score;
+
+      startAutoJump();
+
+      localStorage.setItem("appState", JSON.stringify(appState))
+    }
+
+    function startAutoJump() {
+      appState.isAutoJump = true;
+      let seconds = 0.3;
+
+      setTimeout(() => {
+        navigateToNextQuestion();
+        appState.isAutoJump = false;
+      }, seconds * 1000);
+    }
+
+    function navigateToPreviousQuestion() {
+      if (appState.isAutoJump) {
+        appState.isAutoJump = false;
+        domElements.countdown.textContent = '';
+      }
+
+      if (appState.currentQuestionIndex > 0) {
+        appState.currentQuestionIndex--;
+        updateQuestionDisplay();
+      }
+    }
+
+    function navigateToNextQuestion() {
+      if (appState.currentQuestionIndex === appState.totalQuestions - 1) {
+        finalizeTestResults();
+        return;
+      }
+
+      appState.currentQuestionIndex++;
+      updateQuestionDisplay();
+    }
+
+    function finalizeTestResults() {
+      appState.isTestCompleted = true;
+
+      let totalScore = 0;
+      appState.questions.forEach(question => {
+        totalScore += question.score;
+      });
+
+      factorGroups.forEach(group => {
+        group.total = 0;
+        group.questionIndices.forEach(index => {
+          if (index < appState.questions.length) {
+            group.total += appState.questions[index].score;
+          }
+        });
+      });
+
+      renderResultsDisplay(totalScore);
+    }
+
+    function renderResultsDisplay(totalScore) {
+      domElements.questionContainer.classList.add('hidden');
+      domElements.resultSection.style.display = 'block';
+
+      const averageScore = (totalScore / appState.totalQuestions).toFixed(2);
+      domElements.totalScore.textContent = totalScore;
+      domElements.averageScore.textContent = averageScore;
+
+      domElements.interpretationText.innerHTML = interpretationText;
+
+      domElements.factorsTableBody.innerHTML = '';
+      factorGroups.forEach(group => {
+        const validQuestions = group.questionIndices.filter(index => index < appState.questions.length);
+        const average = (group.total / validQuestions.length);
+        const severity = getSeverityLevel(average);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${group.name}</td>
+          <td>${group.total}</td>
+          <td>${average.toFixed(2)}</td>
+          <td><span class="severity ${severity.class}">${severity.level}</span></td>
+        `;
+        domElements.factorsTableBody.appendChild(row);
+      });
+
+      domElements.factorDescriptions.innerHTML = '<h3>因子解释说明</h3>';
+      factorGroups.forEach(group => {
+        const validQuestions = group.questionIndices.filter(index => index < appState.questions.length);
+        const average = (group.total / validQuestions.length);
+        const severity = getSeverityLevel(average);
+
+        const descriptionDiv = document.createElement('div');
+        descriptionDiv.className = 'factor-description-container';
+
+        descriptionDiv.innerHTML = `
+          <div style="display: flex; align-items: center; margin-bottom: 5px; flex-wrap: wrap;">
+            <strong>${group.name}</strong>
+            <span class="severity ${severity.class}" style="margin-left: 10px;">${severity.level}</span>
+          </div>
+          <p class="factor-description">${group.description}</p>
+        `;
+
+        domElements.factorDescriptions.appendChild(descriptionDiv);
+      });
+    }
+
+    function initializeTestEnvironment() {
+      domElements.introContent.style.display = 'none';
+      domElements.startBtn.style.display = 'none';
+
+      domElements.questionContainer.classList.remove('hidden');
+
+      appState.isTestStarted = true;
+      updateQuestionDisplay();
+    }
+
+    function resetTestEnvironment() {
+      localStorage.removeItem("appState")
+      appState = {
+        ...appState,
+        questions: [],
+        currentQuestionIndex: 0,
+        totalQuestions: 0,
+        isTestStarted: false,
+        isTestCompleted: false,
+        isAutoJump: false
+      };
+
+      initQuestions();
+
+      domElements.resultSection.style.display = 'none';
+      domElements.introSection.classList.remove('hidden');
+
+      domElements.introContent.style.display = 'block';
+      domElements.startBtn.style.display = 'block';
+    }
+
+    function bootstrapApplication() {
+      initQuestions();
+
+      domElements.startBtn.addEventListener('click', initializeTestEnvironment);
+
+      document.addEventListener('keydown', (e) => {
+        if (!appState.isTestStarted || appState.isTestCompleted) return;
+
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          navigateToPreviousQuestion();
+        }
+
+        if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && !appState.isAutoJump) {
+          if (appState.questions[appState.currentQuestionIndex].score !== null) {
+            navigateToNextQuestion();
+          }
+        }
+
+        if (e.key >= '1' && e.key <= '5' && !appState.isAutoJump) {
+          const options = domElements.optionsContainer.querySelectorAll('.option');
+          processOptionSelection(options[parseInt(e.key) - 1]);
+        }
+      });
+
+      const options = domElements.optionsContainer.querySelectorAll('.option');
+      options.forEach(option => {
+        option.style.touchAction = 'manipulation';
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', bootstrapApplication);
+  </script>
+</body>
+
+</html>
