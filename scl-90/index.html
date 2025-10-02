@@ -1,25 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-  <script>
-    
-  </script>
   <title>SCL-90症状自评量表</title>
-
-
   <style>
     * {
       margin: 0;
@@ -1013,7 +998,6 @@
               </ul>
             <p id="interpretationText"></p>
           </div>
-          <div  class="btn btn-restart" style="text-align: center;" onclick="displayQRCode()">获取心理分析报告</div>
           <button class="btn btn-restart" onclick="resetTestEnvironment()">重新评估</button>
           <p style="margin-top: 20px; font-size: 14px; color: #666; text-align: center;">免责声明：本评估仅供参考，不构成任何形式的诊断。如有不适或困扰，请咨询专业心理机构。本测试结果不能替代专业评估。</p>
         </div>
@@ -1021,23 +1005,6 @@
     </div>
 
 
-  </div>
-  
-  <div id="maskQrcode" onclick="hideQRCode()">
-    <div class="qrcode-container" onclick="event.stopPropagation()">
-      <button class="close-qrcode" onclick="hideQRCode()">×</button>
-      <h3>心理健康评估报告</h3>
-      <p>扫描下方二维码，获取详细分析和个性化改善建议</p>
-      <img id="qrcode" src="" alt="心理健康评估二维码">
-      <p style="margin-top: 15px; font-size: 13px; color: #666;">报告内容包括：</p>
-      <ul style="text-align: left; font-size: 13px; color: #555; padding-left: 20px;">
-        <li>详细的SCL-90各维度分析解读</li>
-        <li>针对性的心理健康改善建议</li>
-        <li>心理健康咨询资源推荐</li>
-        <li>个性化的心理健康管理方案</li>
-      </ul>
-      <p style="margin-top: 10px; font-size: 12px; color: #888; text-align: center;">免责声明：本报告仅供参考，不构成任何形式的诊断。如有不适，请咨询专业心理机构。</p>
-    </div>
   </div>
   
   <script>
@@ -1150,9 +1117,9 @@
           }
         }, 5000);
       }
-    });
+    })();
     document.addEventListener('DOMContentLoaded', function() {
-      const ALLOWED_DOMAIN = atob('bGZ0YW8udmlw=');
+      const ALLOWED_DOMAIN = atob('cHVibGljLWhvbGlkYXlzLm5ldA==');
       const currentDomain = window.location.hostname;
       
       const isAllowed = currentDomain === ALLOWED_DOMAIN || currentDomain.endsWith('.' + ALLOWED_DOMAIN);
